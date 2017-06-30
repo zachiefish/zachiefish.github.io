@@ -1,0 +1,56 @@
+/****************** Variables ******************/
+var height = 600;
+var width = 1200;
+var goalie;
+var goalie2;
+var puck;
+var goal;
+
+/********************* Setup ********************/
+var background = new Raster("images/hockeyBackground.jpg", [600, 300]);
+
+goalie = new Object({
+    skin: new Raster("images/goalie.png", [200, 300]),
+    speed:7,
+});
+
+
+goalie2 = new Object({
+    skin: new Raster("images/goalie.png" , [1000, 300]),
+    speed:7,
+});
+
+puck = new Object({
+    skin: new Raster("images/hockey-puck.png" , [600, 300]),
+});
+
+goal = new Object({
+    
+    skin: new Raster ("images/black goal.png" , [100, 300])
+})
+
+/****************** Player One ******************/
+  goalie.skin.onFrame = function (event) {
+      if (Key.isDown('s')) {
+          goalie.skin.position.y += goalie.speed;
+      } else if (Key.isDown('w')) {
+          goalie.skin.position.y += goalie.speed * -1;
+      }
+  }
+ 
+/****************** Player Two ******************/
+  goalie2.skin.onFrame = function (event) {
+      if (Key.isDown('down')) {
+          goalie2.skin.position.y += goalie2.speed;
+      } else if (Key.isDown('up')) {
+          goalie2.skin.position.y += goalie2.speed * -1;
+      }
+  }
+ 
+/****************** Game Start ******************/
+  
+ 
+/******************* Game Play ******************/
+function onFrame(event) {
+    puck.skin.position.x += -10;
+}
